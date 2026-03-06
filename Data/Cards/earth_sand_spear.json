@@ -1,0 +1,10 @@
+{
+	"id": "earth_sand_spear",
+	"name": "Sand Spear",
+	"element": "Earth",
+	"rarity": "Common",
+	"priority": 1,
+	"effects": [
+		{"type": "damage", "amount": 50}
+	]
+}

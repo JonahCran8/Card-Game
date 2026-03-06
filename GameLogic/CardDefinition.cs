@@ -16,7 +16,7 @@ public sealed class CardDefinition
 
 public class CardEffect
 {
-	public string type { get; set;} = "";
+	public EffectType type { get; set;}
 	public string stat { get; set;} = "";
 	
 	public int? amount { get; set;}
@@ -27,3 +27,5 @@ public class CardEffect
 	public string? target { get; set; } = "";
 	public string? card { get; set;} = "";
 }
+
+public enum EffectType {damage, conditionalDamage, bonusAttackPercent, bonusDefensePercent, resetBonusDefense, resetBonusAttack, resetBonusStats, damageDebuff, debuffCard} 

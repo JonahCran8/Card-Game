@@ -15,7 +15,8 @@ public partial class BattleController : Control
 	public override void _Ready()
 	{
 		_battle = new BattleState();
-		_battle.Initialize();
+		_cardDb = GetNode<CardDatabase>("/root/CardDb");
+		_battle.Initialize(_cardDb);
 		
 		_Log = GetNode<RichTextLabel>("Log");
 		_Log.ScrollActive = true;
@@ -35,8 +36,6 @@ public partial class BattleController : Control
 		GetNode<Button>("PlayerUI/PlayCardButton").Pressed += OnPlayCard;
 		GetNode<Button>("PlayerUI/EndRoundButton").Pressed += OnEndRound;
 		GetNode<Button>("PlayerUI/RecoverDeckButton").Pressed += OnRecoverDeck;
-		
-		_cardDb = GetNode<CardDatabase>("/root/CardDb");
 		
 		Log("Initialized battle. Drew opening hand.");
 		Render();
@@ -179,8 +178,15 @@ public partial class BattleController : Control
 		for (int i = 0; i < p.Hand.Count; i++)
 		{
 			int index = i; // capture for closure
+			var cardDef = _cardDb.GetCard(p.Hand[i]);
 			var btn = new Button();
-			btn.Text = p.Hand[i];
+			btn.Text = cardDef != null ? cardDef.name : p.Hand[i];
+			if (cardDef != null)
+			{
+				var style = new StyleBoxFlat();
+				style.BgColor = GetElementColor(cardDef.element);
+				btn.AddThemeStyleboxOverride("normal", style);
+			}
 			btn.Pressed += () => OnSelectCard(index);
 			container.AddChild(btn);
 		}
@@ -231,29 +237,45 @@ public partial class BattleController : Control
 		var e = _battle.Enemy;
 		
 		//display player stats
+		//attack
 		GetNode<Label>("PlayerUI/PlayerStats/PlayerAttack").Text = $"Attack: {p.BaseAttack}";
-		if (p.BonusAttack != 0)
-		{
-			GetNode<Label>("PlayerUI/PlayerStats/PlayerAttack").Text += $" + {p.BonusAttack} Bonus";
-		}
-		GetNode<Label>("PlayerUI/PlayerStats/PlayerDefense").Text = $" Defense: {p.BaseDefense}";
-		if (p.BonusDefense != 0)
-		{
-			GetNode<Label>("PlayerUI/PlayerStats/PlayerDefense").Text += $" + {p.BonusDefense} Bonus";
-		}
+		if (p.BonusAttack > 0)
+		GetNode<Label>("PlayerUI/PlayerStats/PlayerAttack").Text += $" + {p.BonusAttack} Bonus";
+		else if (p.BonusAttack < 0) 
+		GetNode<Label>("PlayerUI/PlayerStats/PlayerAttack").Text += $" - {p.BonusAttack * -1} Debuff";
+		//defense
+		GetNode<Label>("PlayerUI/PlayerStats/PlayerDefense").Text = $"Defense: {p.BaseDefense}";
+		if (p.BonusDefense > 0)
+		GetNode<Label>("PlayerUI/PlayerStats/PlayerDefense").Text += $" + {p.BonusDefense} Bonus";
+		else if (p.BonusDefense < 0)
+		GetNode<Label>("PlayerUI/PlayerStats/PlayerDefense").Text += $" - {p.BonusDefense * -1} Debuff";
 		
 		//display enemy stats
+		//attack
 		GetNode<Label>("PlayerUI/EnemyStats/EnemyAttack").Text = $"Attack: {e.BaseAttack}";
-		if (e.BonusAttack != 0)
-		{
-			GetNode<Label>("PlayerUI/EnemyStats/EnemyAttack").Text += $" + {e.BonusAttack} Bonus";
-		}
+		if (e.BonusAttack > 0)
+		GetNode<Label>("PlayerUI/EnemyStats/EnemyAttack").Text += $" + {e.BonusAttack} Bonus";
+		else if (e.BonusAttack < 0)
+		GetNode<Label>("PlayerUI/EnemyStats/EnemyAttack").Text += $" - {e.BonusAttack * -1} Debuff";
+		//defense
 		GetNode<Label>("PlayerUI/EnemyStats/EnemyDefense").Text = $"Defense: {e.BaseDefense}";
-		if (e.BonusDefense != 0)
+		if (e.BonusDefense > 0)
+		GetNode<Label>("PlayerUI/EnemyStats/EnemyDefense").Text += $" + {e.BonusDefense} Bonus";
+		else if (e.BonusDefense < 0)
+		GetNode<Label>("PlayerUI/EnemyStats/EnemyDefense").Text += $" - {e.BonusDefense * -1} Debuff";
+	}
+	
+	// Sets colours of cards for each element
+	private Color GetElementColor(string element)
+	{
+	switch (element)
 		{
-			GetNode<Label>("PlayerUI/EnemyStats/EnemyDefense").Text += $" + {e.BonusDefense} Bonus";
+			case "Flame": return new Color(0.75f, 0f, 0f);
+			case "Earth": return new Color(0.6f, 0.3f, 0);
+			default:      return new Color(0.3f, 0.3f, 0.3f);
 		}
 	}
+
 
 	private void Log(string msg)
 	{

@@ -1,0 +1,11 @@
+{
+	"id": "flame_engulf",
+	"name": "Engulf",
+	"element": "Flame",
+	"rarity": "Uncommon",
+	"priority": 0,
+	"effects": [
+		{"type": "bonusDefensePercent", "amount": -20},
+		{"type": "bonusAttackPercent", "amount": 50}
+	]
+}

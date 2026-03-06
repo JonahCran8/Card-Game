@@ -13,34 +13,33 @@ public sealed class BattleState
 	public bool PlayerNeedsRecoveryTurn { get; private set; }
 	public bool EnemyNeedsRecoveryTurn { get; private set; }
 	public bool EnemyIsRecovering { get; private set; }
-	public bool RoundCanEnd = { get; private set; } = false;
+	public bool RoundCanEnd { get; set; } = false;
 
 	private readonly Random _rng = new();
 
-	public void Initialize()
+	public void Initialize(CardDatabase db)
 	{
 		Player = new PlayerState(MaxHp: 500, BaseAttack: 100, BaseDefense: 100);
 		Enemy  = new PlayerState(MaxHp: 500, BaseAttack: 100,  BaseDefense: 100);
-
-		// Prototype decks (IDs only)
-		Player.LoadDeck(new[]
-		{
-			"earth_chasm", "earth_fortify", "earth_grounding", "earth_grounding", 
-			"flame_ignite", "earth_grounding", "flame_ignite", "flame_erupt",
-			"earth_chasm", "flame_ignite", "earth_chasm", "earth_grounding"
-		});
-
-		Enemy.LoadDeck(new[]
-		{
-			"earth_chasm", "earth_fortify", "earth_grounding", "earth_grounding", 
-			"flame_ignite", "earth_grounding", "flame_ignite", "flame_erupt",
-			"earth_chasm", "flame_ignite", "earth_chasm", "earth_grounding"
-		});
-
+		
+		var pool = db.Cards.Keys.ToList();
+		Player.LoadDeck(RandomDeck(pool, 12));
+		Enemy.LoadDeck(RandomDeck(pool, 12));
+		
 		Player.ShuffleDrawPile(_rng);
 		Enemy.ShuffleDrawPile(_rng);
-
+		
 		StartRound();
+	}
+	
+	private List<string> RandomDeck(List<string> pool, int size)
+	{
+		var deck = new List<string>();
+		for (int i = 0; i < size; i++)
+		{
+			deck.Add(pool[_rng.Next(pool.Count)]);
+		}
+		return deck;
 	}
 
 	public void StartRound()
@@ -122,19 +121,19 @@ public sealed class BattleState
 		{
 			switch (effect.type)
 			{
-				case "damage":
+				case EffectType.damage:
 					ApplyDamage(effect, card, source, target, actions, action);
 					break;
 					
-				case "bonusAttackPercent":
+				case EffectType.bonusAttackPercent:
 					source.GainBonusAttackPercentOfBase(effect.amount ?? 0);
 					break;
 					
-				case "bonusDefensePercent":
+				case EffectType.bonusDefensePercent:
 					source.GainBonusDefensePercentOfBase(effect.amount ?? 0);
 					break;
 					
-				case "resetBonusStats":
+				case EffectType.resetBonusStats:
 					switch (effect.stat)
 					{
 						case "attack":
@@ -167,7 +166,7 @@ public sealed class BattleState
 		int bonus = 0;
 		foreach (var e in card.effects)
 		{
-			if (e.type == "conditionalDamage")
+			if (e.type == EffectType.conditionalDamage)
 			bonus += ConditionalDamageBonus(actions, action, e);
 		}
 		var (debuffPercent, subtract)  = damageDebuff(actions, action);
@@ -175,7 +174,7 @@ public sealed class BattleState
 		baseDamage -= subtract;
 		
 		int attack = source.TotalAttack;
-		int defense = target.TotalDefense;
+		int defense = Math.Max(1, target.TotalDefense);
 		int damage = (int)MathF.Round(baseDamage * (attack / (2f * defense)));
 		damage = (int)MathF.Round(damage * debuffPercent);
 		target.TakeDamage(damage);
@@ -204,7 +203,7 @@ public sealed class BattleState
 	{
 		foreach (var effect in action.card.effects)
 		{
-			if (effect.type != "debuffCard") continue;
+			if (effect.type != EffectType.debuffCard) continue;
 			
 			bool self = effect.target == "self";
 			//if target is self make it true, otherwise false (enemy)
@@ -238,7 +237,7 @@ public sealed class BattleState
 			foreach (var effect in a.card.effects)
 			{
 				if (!Target(a, action, effect)) continue;
-				if (effect.type != "damageDebuff") continue;
+				if (effect.type != EffectType.damageDebuff) continue;
 				
 				if (effect.mode == "percent")
 				debuffPercent *= (effect.amount ?? 100) / 100f;
@@ -262,7 +261,7 @@ public sealed class BattleState
 				{
 					if (a.source == action.source) continue;
 					if (a.slotIndex != action.slotIndex) continue;
-					if (a.card.effects.Any(e => e.type == "damage"))
+					if (a.card.effects.Any(e => e.type == EffectType.damage))
 					bonusAmount += effect.amount ?? 0;
 				}
 			break;

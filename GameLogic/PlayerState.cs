@@ -41,6 +41,8 @@ public sealed class PlayerState
 	{
 		int add = (BaseAttack * percent) / 100;
 		BonusAttack = BonusAttack + add;
+		if ((BaseAttack + BonusAttack) <= 0)
+		BonusAttack = 1 - BaseAttack;
 	}
 	
 	//add bonus defense, percent of base defense
@@ -48,6 +50,8 @@ public sealed class PlayerState
 	{
 		int add = (BaseDefense * percent) / 100;
 		BonusDefense = BonusDefense + add;
+		if ((BaseDefense + BonusDefense) <= 0)
+		BonusDefense = 1 - BaseDefense;
 	}
 	
 	//remove bonus attack

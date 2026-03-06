@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using Godot;
+using System.Text.Json.Serialization;
 
 namespace GameLogic;
 
@@ -34,7 +35,9 @@ public sealed partial class CardDatabase : Node
 			string path = $"res://Data/Cards/{file}";
 			string json = FileAccess.GetFileAsString(path);
 
-			  CardDefinition? card = JsonSerializer.Deserialize<CardDefinition>(json);
+			var options = new JsonSerializerOptions { Converters = { new JsonStringEnumConverter() } };
+			CardDefinition? card = JsonSerializer.Deserialize<CardDefinition>(json, options);
+
 
 			  if (card == null || string.IsNullOrWhiteSpace(card.id))
 			  {
