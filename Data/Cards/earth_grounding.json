@@ -1,0 +1,11 @@
+{
+	"id": "earth_grounding",
+	"name": "Grounding",
+	"element": "Earth",
+	"rarity": "Uncommon",
+	"priority": 0,
+	"effects": [
+		{"type": "damageDebuff", "target": "all", "amount": 50, "mode": "percent"},
+		{"type": "bonusDefensePercent", "amount": 5}
+	]
+}

@@ -1,0 +1,344 @@
+[gd_scene load_steps=15 format=3 uid="uid://cog8hbd3x74o8"]
+
+[ext_resource type="Script" uid="uid://7cvxnshbydrl" path="res://Scenes/BattleController.cs" id="1_wvl2i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vr6xi"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.5261283, 0.7575456, 0.9840391, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 5
+shadow_color = Color(0.065105215, 0.15359446, 0.21674359, 0.6)
+shadow_size = 5
+shadow_offset = Vector2(-5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvl2i"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.30862975, 0.6481598, 0.955784, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 5
+shadow_color = Color(0.065105215, 0.15359446, 0.21674359, 0.6)
+shadow_size = 5
+shadow_offset = Vector2(-5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c5ef4"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.8993928, 0.38375127, 0.3036201, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 5
+shadow_color = Color(0.065105215, 0.15359446, 0.21674359, 0.6)
+shadow_size = 5
+shadow_offset = Vector2(-5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u22qb"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.8993928, 0.38375127, 0.3036201, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 5
+shadow_color = Color(0.065105215, 0.15359446, 0.21674359, 0.6)
+shadow_size = 5
+shadow_offset = Vector2(-5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6yjxy"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.69097704, 0.23920292, 0.17169505, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 5
+shadow_color = Color(0.065105215, 0.15359446, 0.21674359, 0.6)
+shadow_size = 5
+shadow_offset = Vector2(-5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2h7oj"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.7051818, 0.15720424, 0.2112732, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8teo4"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.8964569, 0.26085234, 0.30857036, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1samx"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.46883184, 0.08821755, 0.12762246, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p46lj"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.3223462, 0.73587734, 0.4647469, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="LabelSettings" id="LabelSettings_wvl2i"]
+font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_vr6xi"]
+font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_2h7oj"]
+font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_1samx"]
+font_size = 12
+
+[node name="Battle" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wvl2i")
+
+[node name="Log" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 950.0
+offset_top = 225.0
+offset_right = 1150.0
+offset_bottom = 425.0
+horizontal_alignment = 1
+
+[node name="PlayerUI" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 1155.0
+offset_bottom = 649.0
+
+[node name="PlayCardButton" type="Button" parent="PlayerUI"]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 400.0
+offset_right = 500.0
+offset_bottom = 475.0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_vr6xi")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wvl2i")
+text = "Play Card"
+
+[node name="EndRoundButton" type="Button" parent="PlayerUI"]
+layout_mode = 0
+offset_left = 700.0
+offset_top = 400.0
+offset_right = 900.0
+offset_bottom = 475.0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_c5ef4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_u22qb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6yjxy")
+text = "End Round"
+
+[node name="RecoverDeckButton" type="Button" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.032
+anchor_bottom = 0.049000002
+offset_left = 90.0
+offset_top = 530.0
+offset_right = 153.04
+offset_bottom = 548.199
+theme_override_styles/normal = SubResource("StyleBoxFlat_2h7oj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8teo4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1samx")
+text = "Recover"
+
+[node name="PileLabel" type="Label" parent="PlayerUI"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 488.0
+offset_right = 280.0
+offset_bottom = 518.0
+
+[node name="EnemyHandLabel" type="Label" parent="PlayerUI"]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 50.0
+offset_right = 1100.0
+offset_bottom = 250.0
+
+[node name="EnemyPileLabel" type="Label" parent="PlayerUI"]
+layout_mode = 0
+offset_left = 850.0
+offset_top = 500.0
+offset_right = 1100.0
+offset_bottom = 600.0
+
+[node name="HandContainer" type="VBoxContainer" parent="PlayerUI"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 250.0
+offset_bottom = 300.0
+
+[node name="PlayerHpBar" type="ProgressBar" parent="PlayerUI"]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 550.0
+offset_right = 800.0
+offset_bottom = 600.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_p46lj")
+step = 1.0
+show_percentage = false
+
+[node name="PlayerHpText" type="Label" parent="PlayerUI/PlayerHpBar"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 12.5
+offset_right = 250.0
+offset_bottom = 37.5
+horizontal_alignment = 1
+
+[node name="EnemyHpBar" type="ProgressBar" parent="PlayerUI"]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 50.0
+offset_right = 800.0
+offset_bottom = 100.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_p46lj")
+step = 1.0
+show_percentage = false
+
+[node name="EnemyHpText" type="Label" parent="PlayerUI/EnemyHpBar"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 12.5
+offset_right = 250.0
+offset_bottom = 37.5
+horizontal_alignment = 1
+
+[node name="PlayerCardSlots" type="HBoxContainer" parent="PlayerUI"]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 325.0
+offset_right = 650.0
+offset_bottom = 350.0
+
+[node name="CardSlot1" type="Label" parent="PlayerUI/PlayerCardSlots"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_wvl2i")
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="PlayerUI/PlayerCardSlots"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CardSlot2" type="Label" parent="PlayerUI/PlayerCardSlots"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_vr6xi")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="EnemyCardSlots" type="HBoxContainer" parent="PlayerUI"]
+layout_mode = 0
+offset_left = 525.0
+offset_top = 200.0
+offset_right = 675.0
+offset_bottom = 225.0
+
+[node name="CardSlot1" type="Label" parent="PlayerUI/EnemyCardSlots"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_2h7oj")
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="PlayerUI/EnemyCardSlots"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CardSlot2" type="Label" parent="PlayerUI/EnemyCardSlots"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_1samx")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PlayerStats" type="VBoxContainer" parent="PlayerUI"]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 485.0
+offset_right = 700.0
+offset_bottom = 535.0
+
+[node name="PlayerAttack" type="Label" parent="PlayerUI/PlayerStats"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PlayerDefense" type="Label" parent="PlayerUI/PlayerStats"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="EnemyStats" type="VBoxContainer" parent="PlayerUI"]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 125.0
+offset_right = 700.0
+offset_bottom = 175.0
+
+[node name="EnemyAttack" type="Label" parent="PlayerUI/EnemyStats"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="EnemyDefense" type="Label" parent="PlayerUI/EnemyStats"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="AIUI" type="Control" parent="."]
+anchors_preset = 0
+offset_left = -8.0
+offset_top = 220.0
+offset_right = 200.0
+offset_bottom = 384.0

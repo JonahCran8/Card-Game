@@ -1,0 +1,11 @@
+{
+	"id": "flame_erupt",
+	"name": "Erupt",
+	"element": "Flame",
+	"rarity": "Uncommon",
+	"priority": 1,
+	"effects": [
+		{"type": "damage", "amount": 200},
+		{"type": "resetBonusStats", "stat": "attack"}
+	]
+}

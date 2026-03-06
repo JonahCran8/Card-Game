@@ -1,0 +1,11 @@
+{
+	"id": "earth_fortify",
+	"name": "Fortify",
+	"element": "Earth",
+	"rarity": "Uncommon",
+	"priority": 0,
+	"effects": [
+		{"type": "bonusDefensePercent", "amount": 20},
+		{"type": "debuffCard", "target": "self", "card": "other_slot"}
+	]
+}

@@ -1,0 +1,24 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Prototypecardgame"
+run/main_scene="uid://cog8hbd3x74o8"
+config/features=PackedStringArray("4.5", "C#", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+CardDb="*res://GameLogic/CardDatabase.cs"
+
+[dotnet]
+
+project/assembly_name="Prototypecardgame"

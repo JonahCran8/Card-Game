@@ -1,0 +1,11 @@
+{
+	"id": "earth_chasm",
+	"name": "Chasm",
+	"element": "Earth",
+	"rarity": "Common",
+	"priority": 1,
+	"effects": [
+		{"type": "damage", "amount": 65},
+		{"type": "conditionalDamage", "condition": "opponent_played_damage_same_slot", "amount": 65}
+	]
+}

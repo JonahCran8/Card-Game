@@ -1,0 +1,10 @@
+{
+	"id": "flame_ignite",
+	"name": "Ignite",
+	"element": "Flame",
+	"rarity": "Common",
+	"priority": 0,
+	"effects": [
+		{ "type": "bonusAttackPercent", "amount": 15 }
+	]
+}
