@@ -23,6 +23,13 @@ config/icon="res://icon.svg"
 
 CardDb="*res://GameLogic/CardDatabase.cs"
 
+[display]
+
+window/size/viewport_width=2560
+window/size/viewport_height=1440
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
 [dotnet]
 
 project/assembly_name="Prototypecardgame"

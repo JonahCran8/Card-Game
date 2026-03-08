@@ -4,6 +4,7 @@
 	"element": "Earth",
 	"rarity": "Common",
 	"priority": 1,
+	"description": "Deal 50 damage, doubled if opponent dealt damage in same slot",
 	"effects": [
 		{"type": "damage", "amount": 50},
 		{"type": "conditionalDamage", "condition": "opponent_played_damage_same_slot", "amount": 50}

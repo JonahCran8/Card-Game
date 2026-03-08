@@ -5,6 +5,7 @@
 	"rarity": "Common",
 	"priority": 1,
 	"effects": [
-		{"type": "damage", "amount": 50}
+		{"type": "damage", "amount": 50},
+		{"type": "piercing"}
 	]
 }

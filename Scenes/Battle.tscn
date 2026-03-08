@@ -147,24 +147,35 @@ grow_vertical = 2
 script = ExtResource("1_wvl2i")
 
 [node name="Log" type="RichTextLabel" parent="." unique_id=63262854]
-layout_mode = 0
-offset_left = 950.0
-offset_top = 225.0
-offset_right = 1150.0
-offset_bottom = 425.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.9
+anchor_top = 0.75
+anchor_right = 0.9
+anchor_bottom = 0.75
+offset_left = -225.0
+offset_top = -325.0
+offset_right = 225.0
+offset_bottom = 325.0
 horizontal_alignment = 1
 
 [node name="PlayerUI" type="Control" parent="." unique_id=1557217911]
 anchors_preset = 0
-offset_right = 1155.0
-offset_bottom = 649.0
+offset_right = 2560.0
+offset_bottom = 1440.0
 
 [node name="PlayCardButton" type="Button" parent="PlayerUI" unique_id=40066705]
-layout_mode = 0
-offset_left = 300.0
-offset_top = 400.0
-offset_right = 500.0
-offset_bottom = 475.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35
+anchor_top = 0.75
+anchor_right = 0.35
+anchor_bottom = 0.75
+offset_left = -150.0
+offset_top = -50.0
+offset_right = 150.0
+offset_bottom = 50.0
+grow_vertical = 0
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_vr6xi")
@@ -172,11 +183,18 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_wvl2i")
 text = "Play Card"
 
 [node name="EndRoundButton" type="Button" parent="PlayerUI" unique_id=387694627]
-layout_mode = 0
-offset_left = 700.0
-offset_top = 400.0
-offset_right = 900.0
-offset_bottom = 475.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.65
+anchor_top = 0.75
+anchor_right = 0.65
+anchor_bottom = 0.75
+offset_left = -150.0
+offset_top = -50.0
+offset_right = 150.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_c5ef4")
@@ -187,87 +205,139 @@ text = "End Round"
 [node name="RecoverDeckButton" type="Button" parent="PlayerUI" unique_id=402545297]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.032
-anchor_bottom = 0.049000002
-offset_left = 90.0
-offset_top = 530.0
-offset_right = 153.04
-offset_bottom = 548.199
+anchor_left = 0.1
+anchor_top = 0.85
+anchor_right = 0.1
+anchor_bottom = 0.85
+offset_left = -125.0
+offset_top = -50.0
+offset_right = 125.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_2h7oj")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_8teo4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_1samx")
 text = "Recover"
 
 [node name="PileLabel" type="Label" parent="PlayerUI" unique_id=1306064878]
-layout_mode = 0
-offset_left = 30.0
-offset_top = 488.0
-offset_right = 280.0
-offset_bottom = 518.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.8
+anchor_right = 0.1
+anchor_bottom = 0.8
+offset_left = -125.0
+offset_top = -15.0
+offset_right = 125.0
+offset_bottom = 15.0
 
 [node name="EnemyHandLabel" type="Label" parent="PlayerUI" unique_id=351768151]
 layout_mode = 0
-offset_left = 900.0
-offset_top = 50.0
-offset_right = 1100.0
-offset_bottom = 250.0
+offset_left = 2208.0
+offset_top = 102.0
+offset_right = 2408.0
+offset_bottom = 302.0
 
 [node name="EnemyPileLabel" type="Label" parent="PlayerUI" unique_id=1221948786]
 layout_mode = 0
-offset_left = 850.0
-offset_top = 500.0
-offset_right = 1100.0
-offset_bottom = 600.0
+offset_left = 2183.0
+offset_top = 285.0
+offset_right = 2433.0
+offset_bottom = 385.0
 
 [node name="HandContainer" type="VBoxContainer" parent="PlayerUI" unique_id=958232487]
-layout_mode = 0
-offset_left = 50.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+offset_left = -100.0
 offset_top = 50.0
-offset_right = 250.0
-offset_bottom = 300.0
+offset_right = 100.0
+offset_bottom = 299.99994
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="PlayerHpBar" type="ProgressBar" parent="PlayerUI" unique_id=2055181738]
-layout_mode = 0
-offset_left = 400.0
-offset_top = 550.0
-offset_right = 800.0
-offset_bottom = 600.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.85
+anchor_right = 0.5
+anchor_bottom = 0.85
+offset_left = -375.0
+offset_top = -37.0
+offset_right = 375.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/fill = SubResource("StyleBoxFlat_p46lj")
 step = 1.0
 show_percentage = false
 
 [node name="PlayerHpText" type="Label" parent="PlayerUI/PlayerHpBar" unique_id=1544660112]
-layout_mode = 0
-offset_left = 150.0
-offset_top = 12.5
-offset_right = 250.0
-offset_bottom = 37.5
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -12.5
+offset_right = 50.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
 
 [node name="EnemyHpBar" type="ProgressBar" parent="PlayerUI" unique_id=1828615534]
-layout_mode = 0
-offset_left = 400.0
-offset_top = 50.0
-offset_right = 800.0
-offset_bottom = 100.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.1
+anchor_right = 0.5
+anchor_bottom = 0.1
+offset_left = -375.0
+offset_top = -38.0
+offset_right = 375.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/fill = SubResource("StyleBoxFlat_p46lj")
 step = 1.0
 show_percentage = false
 
 [node name="EnemyHpText" type="Label" parent="PlayerUI/EnemyHpBar" unique_id=513376042]
-layout_mode = 0
-offset_left = 150.0
-offset_top = 12.5
-offset_right = 250.0
-offset_bottom = 37.5
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -12.5
+offset_right = 50.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
 
 [node name="PlayerCardSlots" type="HBoxContainer" parent="PlayerUI" unique_id=954042054]
-layout_mode = 0
-offset_left = 500.0
-offset_top = 325.0
-offset_right = 650.0
-offset_bottom = 350.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.45
+anchor_right = 0.5
+anchor_bottom = 0.45
+offset_left = -100.0
+offset_top = -25.0
+offset_right = 100.0
+offset_bottom = 25.0
 
 [node name="CardSlot1" type="Label" parent="PlayerUI/PlayerCardSlots" unique_id=875623075]
 layout_mode = 2
@@ -285,11 +355,16 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="EnemyCardSlots" type="HBoxContainer" parent="PlayerUI" unique_id=1489544693]
-layout_mode = 0
-offset_left = 525.0
-offset_top = 200.0
-offset_right = 675.0
-offset_bottom = 225.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.4
+anchor_right = 0.5
+anchor_bottom = 0.4
+offset_left = -100.0
+offset_top = -25.0
+offset_right = 100.0
+offset_bottom = 25.0
 
 [node name="CardSlot1" type="Label" parent="PlayerUI/EnemyCardSlots" unique_id=1774805856]
 layout_mode = 2
@@ -307,11 +382,16 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="PlayerStats" type="VBoxContainer" parent="PlayerUI" unique_id=87517250]
-layout_mode = 0
-offset_left = 500.0
-offset_top = 485.0
-offset_right = 700.0
-offset_bottom = 535.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.77
+anchor_right = 0.5
+anchor_bottom = 0.77
+offset_left = -100.0
+offset_top = -25.0
+offset_right = 100.0
+offset_bottom = 25.0
 
 [node name="PlayerAttack" type="Label" parent="PlayerUI/PlayerStats" unique_id=1308328282]
 layout_mode = 2
@@ -322,11 +402,16 @@ layout_mode = 2
 horizontal_alignment = 1
 
 [node name="EnemyStats" type="VBoxContainer" parent="PlayerUI" unique_id=112151786]
-layout_mode = 0
-offset_left = 500.0
-offset_top = 125.0
-offset_right = 700.0
-offset_bottom = 175.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.16
+anchor_right = 0.5
+anchor_bottom = 0.17
+offset_left = -100.0
+offset_top = -25.0
+offset_right = 100.0
+offset_bottom = 25.0
 
 [node name="EnemyAttack" type="Label" parent="PlayerUI/EnemyStats" unique_id=2132417006]
 layout_mode = 2

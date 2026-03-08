@@ -164,6 +164,7 @@ public sealed class BattleState
 							List<ActionData> actions, ActionData action)
 	{
 		int bonus = 0;
+		bool piercing = card.effects.Any(e => e.type == EffectType.piercing);
 		foreach (var e in card.effects)
 		{
 			if (e.type == EffectType.conditionalDamage)
@@ -174,7 +175,8 @@ public sealed class BattleState
 		baseDamage -= subtract;
 		
 		int attack = source.TotalAttack;
-		int defense = Math.Max(1, target.TotalDefense);
+		int effectiveDefense = (piercing && target.BonusDefense > 0) ? target.BaseDefense : target.TotalDefense;
+		int defense = Math.Max(1, effectiveDefense);
 		int damage = (int)MathF.Round(baseDamage * (attack / (2f * defense)));
 		damage = (int)MathF.Round(damage * debuffPercent);
 		target.TakeDamage(damage);
@@ -261,6 +263,7 @@ public sealed class BattleState
 				{
 					if (a.source == action.source) continue;
 					if (a.slotIndex != action.slotIndex) continue;
+					if (a.canceled) continue;
 					if (a.card.effects.Any(e => e.type == EffectType.damage))
 					bonusAmount += effect.amount ?? 0;
 				}
