@@ -125,18 +125,6 @@ corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 corner_detail = 6
 
-[sub_resource type="LabelSettings" id="LabelSettings_wvl2i"]
-font_size = 12
-
-[sub_resource type="LabelSettings" id="LabelSettings_vr6xi"]
-font_size = 12
-
-[sub_resource type="LabelSettings" id="LabelSettings_2h7oj"]
-font_size = 12
-
-[sub_resource type="LabelSettings" id="LabelSettings_1samx"]
-font_size = 12
-
 [node name="Battle" type="Control" unique_id=880817798]
 layout_mode = 3
 anchors_preset = 15
@@ -247,19 +235,20 @@ offset_top = 285.0
 offset_right = 2433.0
 offset_bottom = 385.0
 
-[node name="HandContainer" type="VBoxContainer" parent="PlayerUI" unique_id=958232487]
+[node name="HandContainer" type="HBoxContainer" parent="PlayerUI" unique_id=1068275789]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.6
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.6
-offset_left = -100.0
-offset_top = 50.0
-offset_right = 100.0
-offset_bottom = 299.99994
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = 132.0
+offset_right = 400.0
+offset_bottom = 282.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
 [node name="PlayerHpBar" type="ProgressBar" parent="PlayerUI" unique_id=2055181738]
 layout_mode = 1
@@ -335,24 +324,9 @@ anchor_top = 0.45
 anchor_right = 0.5
 anchor_bottom = 0.45
 offset_left = -100.0
-offset_top = -25.0
+offset_top = -48.0
 offset_right = 100.0
-offset_bottom = 25.0
-
-[node name="CardSlot1" type="Label" parent="PlayerUI/PlayerCardSlots" unique_id=875623075]
-layout_mode = 2
-label_settings = SubResource("LabelSettings_wvl2i")
-vertical_alignment = 1
-
-[node name="Spacer" type="Control" parent="PlayerUI/PlayerCardSlots" unique_id=1256039339]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="CardSlot2" type="Label" parent="PlayerUI/PlayerCardSlots" unique_id=1978234866]
-layout_mode = 2
-label_settings = SubResource("LabelSettings_vr6xi")
-horizontal_alignment = 2
-vertical_alignment = 1
+offset_bottom = 102.0
 
 [node name="EnemyCardSlots" type="HBoxContainer" parent="PlayerUI" unique_id=1489544693]
 layout_mode = 1
@@ -362,24 +336,9 @@ anchor_top = 0.4
 anchor_right = 0.5
 anchor_bottom = 0.4
 offset_left = -100.0
-offset_top = -25.0
+offset_top = -176.0
 offset_right = 100.0
-offset_bottom = 25.0
-
-[node name="CardSlot1" type="Label" parent="PlayerUI/EnemyCardSlots" unique_id=1774805856]
-layout_mode = 2
-label_settings = SubResource("LabelSettings_2h7oj")
-vertical_alignment = 1
-
-[node name="Spacer" type="Control" parent="PlayerUI/EnemyCardSlots" unique_id=873783597]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="CardSlot2" type="Label" parent="PlayerUI/EnemyCardSlots" unique_id=460445199]
-layout_mode = 2
-label_settings = SubResource("LabelSettings_1samx")
-horizontal_alignment = 2
-vertical_alignment = 1
+offset_bottom = -26.0
 
 [node name="PlayerStats" type="VBoxContainer" parent="PlayerUI" unique_id=87517250]
 layout_mode = 1

@@ -163,12 +163,44 @@ public partial class BattleController : Control
 		RenderSlots();
 		RenderStats();
 	}
+	
+	private Button CreateCardButton(string cardId)
+	{
+		var cardDef = _cardDb.GetCard(cardId);
+		var btn = new Button();
+		btn.CustomMinimumSize = new Vector2(100, 150);
+		btn.SizeFlagsHorizontal = Control.SizeFlags.ShrinkCenter;
+		btn.Text = cardDef != null ? cardDef.name : cardId;
+
+		Texture2D cardTexture = null;
+		string texturePath = $"res://Assets/Cards/{cardId}.png";
+		if (ResourceLoader.Exists(texturePath))
+			cardTexture = GD.Load<Texture2D>(texturePath);
+		if (cardTexture != null)
+		{
+			btn.Icon = cardTexture;
+			btn.ExpandIcon = true;
+			btn.Text = "";
+		}
+		else if (cardDef != null)
+		{
+			var baseColor = GetElementColor(cardDef.element);
+			var style = new StyleBoxFlat();
+			style.BgColor = baseColor;
+			btn.AddThemeStyleboxOverride("normal", style);
+			btn.AddThemeStyleboxOverride("hover", style.BgColor != null ? new StyleBoxFlat { BgColor = baseColor.Darkened(0.15f) } : null);
+			btn.AddThemeStyleboxOverride("pressed", new StyleBoxFlat { BgColor = baseColor.Darkened(0.3f) });
+			btn.AddThemeStyleboxOverride("disabled", style);
+		}
+
+		return btn;
+	}
 
 	private void RenderHand()
 	{
 		
 		var p = _battle.Player;
-		var container = GetNode<VBoxContainer>("PlayerUI/HandContainer");
+		var container = GetNode<HBoxContainer>("PlayerUI/HandContainer");
 
 		//Clear old buttons
 		foreach (var child in container.GetChildren())
@@ -177,25 +209,8 @@ public partial class BattleController : Control
 		//Create one button for each card in hand
 		for (int i = 0; i < p.Hand.Count; i++)
 		{
-			int index = i; // capture for closure
-			var cardDef = _cardDb.GetCard(p.Hand[i]);
-			var btn = new Button();
-			btn.Text = cardDef != null ? cardDef.name : p.Hand[i];
-			if (cardDef != null)
-			{
-				var baseColor = GetElementColor(cardDef.element);
-				var style = new StyleBoxFlat();
-				style.BgColor = baseColor;
-				btn.AddThemeStyleboxOverride("normal", style);
-
-				var hoverStyle = new StyleBoxFlat();
-				hoverStyle.BgColor = baseColor.Darkened(0.15f);
-				btn.AddThemeStyleboxOverride("hover", hoverStyle);
-
-				var pressedStyle = new StyleBoxFlat();
-				pressedStyle.BgColor = baseColor.Darkened(0.3f);
-				btn.AddThemeStyleboxOverride("pressed", pressedStyle);
-			}
+			var index = i;
+			var btn = CreateCardButton(p.Hand[i]);
 			btn.Pressed += () => OnSelectCard(index);
 			container.AddChild(btn);
 		}
@@ -232,12 +247,20 @@ public partial class BattleController : Control
 	{
 		var p = _battle.Player;
 		var e = _battle.Enemy;
+		
+		var playerSlots = GetNode<HBoxContainer>("PlayerUI/PlayerCardSlots");
+		var enemySlots = GetNode<HBoxContainer>("PlayerUI/EnemyCardSlots");
+		
+		foreach (var child in playerSlots.GetChildren())
+		child.QueueFree();
+		foreach (var child in enemySlots.GetChildren())
+		child.QueueFree();
+		
+		foreach (var cardId in p.CardsPlayed)
+			playerSlots.AddChild(CreateCardButton(cardId));
 
-		GetNode<Label>("PlayerUI/PlayerCardSlots/CardSlot1").Text = p.CardsPlayed.Count > 0 ? p.CardsPlayed[0] : "";
-		GetNode<Label>("PlayerUI/PlayerCardSlots/CardSlot2").Text = p.CardsPlayed.Count > 1 ? p.CardsPlayed[1] : "";
-
-		GetNode<Label>("PlayerUI/EnemyCardSlots/CardSlot1").Text = e.CardsPlayed.Count > 0 ? e.CardsPlayed[0] : "";
-		GetNode<Label>("PlayerUI/EnemyCardSlots/CardSlot2").Text = e.CardsPlayed.Count > 1 ? e.CardsPlayed[1] : "";
+		foreach (var cardId in e.CardsPlayed)
+			enemySlots.AddChild(CreateCardButton(cardId));
 	}
 	
 	private string FormatStat(string name, int base_, int bonus)
