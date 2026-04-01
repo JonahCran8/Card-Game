@@ -1,6 +1,6 @@
 {
-	"id": "flame_erupt",
-	"name": "Erupt",
+	"id": "flame_eruption",
+	"name": "Eruption",
 	"element": "Flame",
 	"rarity": "Uncommon",
 	"priority": 1,
